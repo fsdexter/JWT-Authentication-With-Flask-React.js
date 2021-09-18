@@ -5,19 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null,
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -46,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			login: async (email, password) => {
+			Singup: async (email, password) => {
 
 				const raw = JSON.stringify({
 					"email":email,
@@ -61,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try{
-					const response = await fetch(`${API_BASE_URL}/api/token`, requestOptions)
+					const response = await fetch(`${API_BASE_URL}/api/sign_up`, requestOptions)
 					if(response.status !== 200){
 						alert("Something went wrong");
 						return false;

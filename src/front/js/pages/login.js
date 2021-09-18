@@ -11,7 +11,7 @@ export const Login = () => {
 
 	const handleLogin = () => {
 		actions.login(email, password).then(() =>{
-			history.pushState("/home")
+			history.pushState("/")
 		})		
 	}
 

@@ -25,29 +25,24 @@ def handle_hello():
     return jsonify(response_body), 200
 
 # Create a route to authenticate your users and return JWTs.
-@api.route('/token', methods=['POST'])
+
+@api.route('/sign_up', methods=['POST'])
 def create_token():
 
     # The create_access_token() function is used to actually generate the JWT.
 
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-    if email != "test" or password != "test":
-        return jsonify({"msg": "Bad email or password"}), 401
-
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
-
-@api.route('/sign_up', methods=['POST'])
 def sing_up_user():
     
-    body_request = request.get_json()
-    email_request = body_request.get("email", None)
-    password_request = body_request.get("password", None)
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
     access_token = create_access_token(identity=email)
     
     new_user = User(
-        email = email_request, 
+        email = email
         password = access_token
     )
     
@@ -56,4 +51,4 @@ def sing_up_user():
     
     return jsonify(body_request), 200
 
-@api.route('/login', )
+@api.route('/login', methods=[] )
